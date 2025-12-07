@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from "cors";
-import { ErrorMiddleware } from '@multi-vendor-ecommerce/shared-backend';
 import cookieParser from 'cookie-parser';
+import { ErrorMiddleware } from '@multi-vendor-ecommerce/shared-backend';
 
 const app = express();
 
@@ -11,7 +11,9 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
 }))
+// parses incoming JSON request bodies and makes them available on req.body
 app.use(express.json());
+// parses cookies from the request header and puts them into req.cookies
 app.use(cookieParser());
 
 app.get('/signin', (req, res) => {
